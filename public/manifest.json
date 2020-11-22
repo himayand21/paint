@@ -1,6 +1,6 @@
 {
-  "name": "demo",
-  "short_name": "demo",
+  "name": "paint",
+  "short_name": "paint",
   "display": "standalone",
   "start_url": "localhost:8080",
   "theme_color": "#000000",

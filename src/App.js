@@ -1,9 +1,12 @@
 import React from 'react';
 
+import PaperContainer from './PaperContainer';
+
 const App = () => {
   return (
     <div>
-      Paint
+      <span>Paint</span>
+      <PaperContainer />
     </div>
   )
 }
