@@ -36,7 +36,8 @@
     "webpack-manifest-plugin": "^2.2.0"
   },
   "dependencies": {
-    "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-paper-bindings": "2.0.0"
   }
 }
