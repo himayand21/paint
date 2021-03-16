@@ -1,70 +1,55 @@
-import React, { Component } from "react";
-import {
-  View,
-  Layer,
-  PointText,
-  Circle,
-  Ellipse,
-  Tool,
-} from "react-paper-bindings";
+import React, {useEffect} from 'react';
+import paper from 'paper';
 
-class PaperContainer extends Component {
-  constructor(props) {
-    super(props);
+const CANVAS_ID = 'paint-canvas';
 
-    this.state = {
-      mounted: false,
+const PaperContainer = () => {
+    let path;
+    const pathTool = new paper.Tool();
+    pathTool.maxDistance = 5;
+
+    useEffect(() => {
+        paper.setup(CANVAS_ID);
+
+        paper.view.onResize = ({size, delta}) => {
+            const scale = size.width / (size.width - delta.width);
+            paper.project.layers.forEach((each) => {
+                each.scale(scale);
+                each.position.x *= scale;
+                each.position.y *= scale;
+            });
+        };
+    }, []);
+
+    pathTool.onMouseDown = () => {
+        if (path) {
+            path.selected = false;
+        }
+        path = new paper.Path();
+        path.strokeColor = 'black';
     };
-    this._box = null;
-  }
 
-  componentDidMount() {
-    this.setState({ mounted: true });
-  }
+    pathTool.onMouseDrag = (event) => {
+        path.add(event.point);
+    };
 
-  render() {
-    const { mounted } = this.state;
-    const box = this._box && this._box.getBoundingClientRect();
-
-    const viewProps = {
-      width: (box && box.width) || 1000,
-      height: (box && box.height) || 1000,
+    pathTool.onMouseUp = () => {
+        path.smooth();
     };
 
     return (
-      <div className="App" ref={(ref) => (this._box = ref)}>
-        {mounted && (
-          <View {...viewProps}>
-            <Layer>
-              <PointText
-                point={[200, 200]}
-                content={"Click Me"}
-                fillColor={"#000000"}
-                fontSize={18}
-              />
-              <Ellipse
-                center={[100, 100]}
-                size={[70, 25]}
-                strokeWidth={2.5}
-                strokeColor={"#61DAFB"}
-              />
-              <Circle center={[80, 50]} radius={30} strokeColor={"black"} />
-              <Tool active={true} name={"circle"} />
-              <PointText
-                content={"Paper.js"}
-                fillColor={"red"}
-                fontFamily={"Courier New"}
-                fontSize={30}
-                fontWeight={"bold"}
-                justification={"center"}
-                point={[150, 180]}
-              />
-            </Layer>
-          </View>
-        )}
-      </div>
+        <div className="paper-container">
+            <div className="paper-wrapper">
+                <canvas
+                    data-paper-resize="true"
+                    resize="true"
+                    id={CANVAS_ID}
+                    keepalive="false"
+                    data-paper-keepalive="false"
+                />
+            </div>
+        </div>
     );
-  }
-}
+};
 
 export default PaperContainer;

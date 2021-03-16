@@ -22,6 +22,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "babel-eslint": "^10.1.0",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
@@ -33,11 +34,16 @@
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1",
-    "webpack-manifest-plugin": "^2.2.0"
+    "eslint": "^7.5.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-react": "^7.20.3",
+    "webpack-manifest-plugin": "^2.2.0",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0"
   },
   "dependencies": {
+    "paper": "^0.12.12",
     "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-paper-bindings": "2.0.0"
+    "react-dom": "16.8.6"
   }
 }
