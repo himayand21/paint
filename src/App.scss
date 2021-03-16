@@ -1,0 +1,77 @@
+html,
+body {
+    height: 100vh;
+    // overflow: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none !important;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    text-decoration: unset;
+    color: unset;
+}
+
+canvas[resize] {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.app-container {
+    height: 100vh;
+}
+
+.slide-navigator {
+    height: 150px;
+    margin-bottom: 10px;
+    background-color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+.slide-container {
+    width: calc(100% - 20px);
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.tools-container {
+    width: 100px;
+    align-self: stretch;
+    margin-right: 10px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.paper-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: calc((100vh - 170px) * 16 / 9);
+    max-height: calc(100vh - 170px);
+    margin: auto;
+    .paper-wrapper {
+        width: 100%;
+        padding-bottom: 56.25%;
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        canvas {
+            position: absolute;
+            background-color: white;
+            top: 0;
+            left: 0;
+        }
+    }
+    
+}
